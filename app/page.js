@@ -1,5 +1,5 @@
-import { Suspense } from 'react'
-import Header from "@/components/Header";
+import { Suspense } from "react";
+import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import FeaturesAccordion from "@/components/FeaturesAccordion";

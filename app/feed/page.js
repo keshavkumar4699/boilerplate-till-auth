@@ -1,5 +1,5 @@
 // app/posts/page.js (Server Component)
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import PostCard from "./PostCard";
 
 async function getPosts() {
