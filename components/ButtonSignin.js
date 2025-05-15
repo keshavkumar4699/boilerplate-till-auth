@@ -5,7 +5,7 @@ import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import config from "@/config";
 
-const ButtonSignin = ({ text = "SignIn", extraStyle }) => {
+const ButtonSignin = ({ text = "SignIn", extraStyle, onOpenLoginModal}) => {
   const { data: session, status } = useSession();
 
   if (status === "authenticated") {
@@ -34,17 +34,13 @@ const ButtonSignin = ({ text = "SignIn", extraStyle }) => {
   }
 
   return (
-    <Link
-      href="/api/auth/signin"
-      className={`btn ${extraStyle ? extraStyle : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
-        signIn(undefined, { callbackUrl: config.auth.callbackUrl });
-      }}
-    >
-      {text}
-    </Link>
-  );
+      <button
+        className={`btn ${extraStyle ? extraStyle : ""}`}
+        onClick={() => onOpenLoginModal('login')}
+      >
+        {text}
+      </button>
+    );
 };
 
 export default ButtonSignin;

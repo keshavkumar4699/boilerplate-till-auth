@@ -4,10 +4,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { useSession, signIn } from "next-auth/react"; // Import signIn for use in the modal
+import { signIn } from "next-auth/react"; // Import signIn for use in the modal
 // ButtonSignin component will be modified or its usage changed.
 // For now, we'll define how Header expects to interact with a sign-in trigger.
-import OriginalButtonSignin from "./ButtonSignin"; // Keep original for authenticated state for now
+import ButtonSignin from "./ButtonSignin"; // Keep original for authenticated state for now
 import logo from "@/app/icon.png";
 import config from "@/config";
 
@@ -260,8 +260,7 @@ const Header = () => {
 
           <div className="hidden lg:flex lg:justify-end lg:flex-1 items-center gap-3"> {/* Increased gap slightly */}
             {/* Use OriginalButtonSignin for authenticated view, or custom button for login trigger */}
-            <OriginalButtonSignin extraStyle="btn-ghost btn-sm" onOpenLoginModal={() => openAuthModal('login')} />
-            <button type="button" className="btn btn-primary btn-sm" onClick={() => openAuthModal('register')}>Register</button>
+            <ButtonSignin extraStyle="btn-primary btn-outline btn-sm" onOpenLoginModal={() => openAuthModal('login')} />
           </div>
         </nav>
 
@@ -287,8 +286,7 @@ const Header = () => {
                 </div>
                 <div className="py-6 space-y-3">
                   {/* Mobile Sign In Button - now triggers modal */}
-                  <button type="button" className="btn btn-primary w-full" onClick={() => openAuthModal('login')}>Sign In</button>
-                  <button type="button" className="btn btn-outline w-full" onClick={() => openAuthModal('register')}>Register</button>
+                  <ButtonSignin extraStyle="btn btn-outline btn-primary w-full" onOpenLoginModal={() => openAuthModal('login')} />
                 </div>
               </div>
             </div>
