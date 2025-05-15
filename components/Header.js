@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
+import RegisterModal from "./RegisterModal";
 import logo from "@/app/icon.png";
 import config from "@/config";
 
@@ -101,7 +102,10 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
+        <div className="hidden lg:flex lg:justify-end lg:flex-1 lg:gap-2">
+          <div>{cta}</div>
+          <RegisterModal/>
+        </div>
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
@@ -168,7 +172,7 @@ const Header = () => {
             </div>
             <div className="divider"></div>
             {/* Your CTA on small screens */}
-            <div className="flex flex-col">{cta}</div>
+            <div className="flex flex-col gap-4">{cta} <RegisterModal/> </div>
           </div>
         </div>
       </div>
