@@ -4,9 +4,25 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import config from "@/config";
+import { useRouter } from "next/navigation";
 
 const ButtonSignin = ({ text = "SignIn", extraStyle, onOpenLoginModal}) => {
+  const router = useRouter();
   const { data: session, status } = useSession();
+
+  const handleClick = () => {
+    if (status === "authenticated") {
+      router.push(config.auth.callbackUrl);
+    } else {
+      // If onOpenLoginModal is provided (for in-page modals)
+      if (onOpenLoginModal) {
+        onOpenLoginModal('login');
+      } else {
+        // Otherwise redirect to the auth page that will show the modal
+        router.push('/auth?mode=login');
+      }
+    }
+  };
 
   if (status === "authenticated") {
     return (
@@ -36,7 +52,7 @@ const ButtonSignin = ({ text = "SignIn", extraStyle, onOpenLoginModal}) => {
   return (
       <button
         className={`btn ${extraStyle ? extraStyle : ""}`}
-        onClick={() => onOpenLoginModal('login')}
+        onClick={handleClick}
       >
         {text}
       </button>

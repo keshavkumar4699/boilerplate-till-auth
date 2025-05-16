@@ -140,11 +140,8 @@ export const authOptions = {
     strategy: "jwt",
   },
   pages: {
-    // signIn: '/auth/signin', // Optionally, specify custom sign-in page
-    // signOut: '/auth/signout',
-    // error: '/auth/error', // Error code passed in query string as ?error=
-    // verifyRequest: '/auth/verify-request', // (used for email provider)
-    // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out to disable)
+    signIn: '/auth?mode=login', // Redirect to your custom auth page
+    error: '/auth?mode=login&error=1', // Handle errors through your modal
   },
   theme: {
     colorScheme: "auto", // "auto" | "dark" | "light"

@@ -14,6 +14,14 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
     }
   }, [isOpen, initialMode]);
 
+  const handleClose = () =>{
+    if(onClose) {
+      onClose();
+    } else {
+      window.location.href = '/';
+    }
+  };
+
   return (
     <dialog id="auth_modal" className={`modal ${isOpen ? "modal-open" : ""}`}>
       <div className="modal-box w-11/12 max-w-md p-6 md:p-8 rounded-lg shadow-xl bg-base-100 relative">
@@ -27,14 +35,14 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
 
         {mode === 'login' ? (
           <LoginForm 
-            onClose={onClose}
+            onClose={handleClose}
             onSwitchToRegister={() => setMode('register')}
             error={error}
             setError={setError}
           />
         ) : (
           <RegisterForm 
-            onClose={onClose}
+            onClose={handleClose}
             onSwitchToLogin={() => setMode('login')}
             error={error}
             setError={setError}
@@ -43,7 +51,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
       </div>
       
       <form method="dialog" className="modal-backdrop">
-        <button type="button" onClick={onClose}>close</button>
+        <button type="button" onClick={handleClose}>close</button>
       </form>
     </dialog>
   );
