@@ -32,6 +32,8 @@ Let's ship it, FAST ⚡️
 -   Analyze your traffic
 -   Get insights on your customers
 -   Make data-driven decisions
+-   now you will can login using credentials
+-   you will get login modals for perfect visualization
 
 ShipFast members get 30% OFF on all plans! 🎁
 
